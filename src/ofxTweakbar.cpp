@@ -130,6 +130,21 @@ ofxTweakbarFloat* ofxTweakbar::addFloat(
 	return type;
 }
 
+ofxTweakbarFloat* ofxTweakbar::addFloatWithCallback(
+				   const char* pName
+				   ,TwSetVarCallback setCallback
+				   ,TwGetVarCallback getCallback										   
+				   ,void* pValue
+				   ,const char* pDef
+				   )
+{
+	ofxTweakbarFloat* type = new ofxTweakbarFloat(this, pName, pValue);
+	//TwAddVarRW(bar, type->getName(), TW_TYPE_FLOAT, pValue, pDef);
+	TwAddVarCB(bar, type->getName(), TW_TYPE_FLOAT, setCallback, getCallback, pValue, pDef);
+	variables[type->getName()] = type;
+	return type;	
+}
+
 ofxTweakbarBool* ofxTweakbar::addBool(
 		 const char* pName
 		,void *pValue
@@ -150,6 +165,20 @@ ofxTweakbarInt* ofxTweakbar::addInt(
 {
 	ofxTweakbarInt* type = new ofxTweakbarInt(this, pName, pValue);
 	TwAddVarRW(bar,type->getName(), TW_TYPE_INT32, pValue, pDef);
+	variables[type->getName()] = type;
+	return type;
+}
+
+ofxTweakbarInt* ofxTweakbar::addIntWithCallback(
+		 const char* pName
+		 ,TwSetVarCallback setCallback
+		 ,TwGetVarCallback getCallback										   
+		 ,void* pValue
+		 ,const char* pDef)
+{
+	ofxTweakbarInt* type = new ofxTweakbarInt(this, pName, pValue);
+	//TwAddVarRW(bar,type->getName(), TW_TYPE_INT32, pValue, pDef);
+	TwAddVarCB(bar, type->getName(), TW_TYPE_INT32, setCallback, getCallback, pValue, pDef);	
 	variables[type->getName()] = type;
 	return type;
 }

@@ -17,6 +17,15 @@ public:
 			,void* pValue
 			,const char* pDef = "min=0 max=1 step=0.01"
 	);
+
+	ofxTweakbarFloat* addFloatWithCallback(
+		   const char* pName
+		   ,TwSetVarCallback setCallback
+		   ,TwGetVarCallback getCallback										   
+		   ,void* pValue
+		   ,const char* pDef = "min=0 max=1 step=0.01"
+	);	
+	
 	ofxTweakbarBool* addBool(
 			const char* pName
 			,void *pValue
@@ -29,6 +38,14 @@ public:
 			,const char* pDef = "min=0 max=10 step=1"
 	);
 	
+	ofxTweakbarInt* addIntWithCallback(
+		   const char* pName
+		   ,TwSetVarCallback setCallback
+		   ,TwGetVarCallback getCallback										   
+		   ,void* pValue
+		   ,const char* pDef = "min=0 max=10 step=1"
+	);		
+
 	ofxTweakbarVec3f* addVec3f(
 			const char* pName
 			,void *pValue
